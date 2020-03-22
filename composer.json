@@ -1,7 +1,7 @@
 {
     "name": "mireon/yandex-turbo",
     "description": "Package for working with the «Yandex.Turbo» service.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "keywords": ["yandex", "yandex turbo"],
     "type": "library",
     "license": "MIT",
@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "ext-mbs n tring": "*"
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^7"
