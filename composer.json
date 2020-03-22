@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "ext-mbs n tring": "*"
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^7"
