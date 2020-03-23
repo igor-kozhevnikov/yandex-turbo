@@ -3,7 +3,7 @@
 namespace Mireon\YandexTurbo\Channels\Articles\Item\Metrics;
 
 /**
- * The contract for a list of metrics.
+ * The contract for the metrics.
  * 
  * @package Mireon\YandexTurbo\Channels\Articles\Item\Metrics
  */

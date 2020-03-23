@@ -98,7 +98,7 @@ class Item implements ItemInterface
     private ?RelatedLinksInterface $relatedLinks = null;
 
     /**
-     * The metrics list.
+     * The metrics.
      *
      * @var MetricsInterface|null $metrics
      */
@@ -336,6 +336,39 @@ class Item implements ItemInterface
     }
 
     /**
+     * Sets metrics.
+     *
+     * @param MetricsInterface|null $metrics
+     *   A metrics.
+     *
+     * @return void
+     */
+    public function setMetrics(?MetricsInterface $metrics): void
+    {
+        $this->metrics = $metrics;
+    }
+
+    /**
+     * Indicates if the metrics is set.
+     *
+     * @return bool
+     */
+    public function hasMetrics(): bool
+    {
+        return !is_null($this->metrics);
+    }
+
+    /**
+     * Returns the metrics.
+     *
+     * @return MetricsInterface|null
+     */
+    public function getMetrics(): ?MetricsInterface
+    {
+        return $this->metrics;
+    }
+
+    /**
      * Sets related links.
      *
      * @param RelatedLinksInterface|null $links
@@ -399,39 +432,6 @@ class Item implements ItemInterface
     public function getContent(): ?ContentInterface
     {
         return $this->content;
-    }
-
-    /**
-     * Sets the list of metrics.
-     *
-     * @param MetricsInterface|null $metrics
-     *   A list of metrics.
-     *
-     * @return void
-     */
-    public function setMetrics(?MetricsInterface $metrics): void
-    {
-        $this->metrics = $metrics;
-    }
-
-    /**
-     * Indicates if the list of metrics is set.
-     *
-     * @return bool
-     */
-    public function hasMetrics(): bool
-    {
-        return !is_null($this->metrics);
-    }
-
-    /**
-     * Returns the list of metrics.
-     *
-     * @return MetricsInterface|null
-     */
-    public function getMetrics(): ?MetricsInterface
-    {
-        return $this->metrics;
     }
 
     /**

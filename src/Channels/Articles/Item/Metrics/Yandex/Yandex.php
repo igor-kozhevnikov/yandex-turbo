@@ -44,14 +44,11 @@ class Yandex implements MetricInterface
      *
      * @param string|null $id
      *   A schema identifier.
-     * @param array|null $breadcrumbs
-     *   A list of breadcrumbs.
      */
-    public function __construct(?string $id = null, ?array $breadcrumbs = null)
+    public function __construct(?string $id = null)
     {
         $this->setRenderer(YandexRender::class);
         $this->setId($id);
-        $this->setBreadcrumbs($breadcrumbs);
     }
 
     /**
@@ -99,12 +96,10 @@ class Yandex implements MetricInterface
     {
         $this->breadcrumbs = [];
 
-        if (empty($breadcrumbs)) {
-            return;
-        }
-
-        foreach ($breadcrumbs as $breadcrumb) {
-            $this->addBreadcrumb($breadcrumb);
+        if (!empty($breadcrumbs)) {
+            foreach ($breadcrumbs as $breadcrumb) {
+                $this->addBreadcrumb($breadcrumb);
+            }
         }
     }
 

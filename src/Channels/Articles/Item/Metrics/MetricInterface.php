@@ -17,7 +17,7 @@ interface MetricInterface
     public function isValid(): bool;
 
     /**
-     * Render a metrics.
+     * Render a metric.
      *
      * @return string|null
      */

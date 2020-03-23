@@ -7,11 +7,11 @@ use Mireon\YandexTurbo\Traits\MagicSetter;
 use Mireon\YandexTurbo\Traits\Renderer;
 
 /**
- * The list of metrics.
+ * The metrics.
  *
  * @method self metrics(MetricInterface[]|null $metrics)
  *   Sets a list of metrics.
- * @method self metric(?MetricInterface $metrics)
+ * @method self metric(?MetricInterface $metric)
  *   Adds a metric.
  *
  * @package Mireon\YandexTurbo\Channels\Articles\Item\Metrics
