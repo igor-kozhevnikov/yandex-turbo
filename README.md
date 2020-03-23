@@ -1,5 +1,10 @@
 # Yandex.Turbo
 
+[![PHP](https://img.shields.io/badge/php-7.4-green.svg?color=red)](https://github.com/Mireon/yandex-turbo)
+[![Size](https://img.shields.io/github/repo-size/mireon/yandex-turbo?color=green)](https://github.com/Mireon/yandex-turbo)
+[![License](https://img.shields.io/github/license/mireon/yandex-turbo?color=green)](https://github.com/Mireon/yandex-turbo)
+[![Release](https://img.shields.io/github/v/release/mireon/yandex-turbo?color=red)](https://github.com/Mireon/yandex-turbo)
+
 - [Официальная документация](https://yandex.ru/dev/turbo/doc/concepts/index-docpage/)
 - Требуемая версия PHP: >= [7.4](https://www.php.net/releases/7_4_0.php)
         
