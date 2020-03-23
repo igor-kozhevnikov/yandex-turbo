@@ -4,6 +4,7 @@ namespace Mireon\YandexTurbo\Channels\Articles\Item;
 
 use DateTime;
 use Mireon\YandexTurbo\Channels\Articles\Item\Content\ContentInterface;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\MetricsInterface;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\RelatedLinksInterface;
 use Mireon\YandexTurbo\Traits\Creator;
 use Mireon\YandexTurbo\Traits\MagicSetter;
@@ -29,6 +30,8 @@ use Mireon\YandexTurbo\Traits\Renderer;
  *   Sets related links.
  * @method self content(ContentInterface|null $content)
  *   Sets an content.
+ * @method self metrics(MetricsInterface|null $metrics)
+ *   Sets metrics.
  *
  * @package Mireon\YandexTurbo\Channels\Articles\Item
  */
@@ -93,6 +96,13 @@ class Item implements ItemInterface
      * @var RelatedLinksInterface|null
      */
     private ?RelatedLinksInterface $relatedLinks = null;
+
+    /**
+     * The metrics list.
+     *
+     * @var MetricsInterface|null $metrics
+     */
+    private ?MetricsInterface $metrics = null;
 
     /**
      * The constructor.
@@ -392,6 +402,39 @@ class Item implements ItemInterface
     }
 
     /**
+     * Sets the list of metrics.
+     *
+     * @param MetricsInterface|null $metrics
+     *   A list of metrics.
+     *
+     * @return void
+     */
+    public function setMetrics(?MetricsInterface $metrics): void
+    {
+        $this->metrics = $metrics;
+    }
+
+    /**
+     * Indicates if the list of metrics is set.
+     *
+     * @return bool
+     */
+    public function hasMetrics(): bool
+    {
+        return !is_null($this->metrics);
+    }
+
+    /**
+     * Returns the list of metrics.
+     *
+     * @return MetricsInterface|null
+     */
+    public function getMetrics(): ?MetricsInterface
+    {
+        return $this->metrics;
+    }
+
+    /**
      * Reset all data.
      *
      * @return void
@@ -406,6 +449,7 @@ class Item implements ItemInterface
         $this->author = null;
         $this->relatedLinks = null;
         $this->content = null;
+        $this->metrics = null;
     }
 
     /**
