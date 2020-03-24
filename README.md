@@ -1,5 +1,10 @@
 # Yandex.Turbo
 
+[![PHP](https://img.shields.io/badge/php-7.4-green.svg?color=red)](https://github.com/Mireon/yandex-turbo)
+[![Size](https://img.shields.io/github/repo-size/mireon/yandex-turbo?color=green)](https://github.com/Mireon/yandex-turbo)
+[![License](https://img.shields.io/github/license/mireon/yandex-turbo?color=green)](https://github.com/Mireon/yandex-turbo)
+[![Release](https://img.shields.io/github/v/release/mireon/yandex-turbo?color=red)](https://github.com/Mireon/yandex-turbo)
+
 - [Официальная документация](https://yandex.ru/dev/turbo/doc/concepts/index-docpage/)
 - Требуемая версия PHP: >= [7.4](https://www.php.net/releases/7_4_0.php)
         
@@ -192,6 +197,9 @@ Articles::create()
 <?php
 
 use Mireon\YandexTurbo\Channels\Articles\Item\Item;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Metrics;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Yandex\Breadcrumb;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Yandex\Yandex;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\RelatedLinks;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\Infinity\Link as InfinityLink;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\External\Link as ExternalLink;
@@ -205,6 +213,13 @@ Item::create()
     ->topic('topic')
     ->pubDate('date')
     ->author('author')
+    ->metrics(Metrics::create()
+        ->metric(Yandex::create()
+            ->id('123456')
+            ->breadcrumb(Breadcrumb::create('text', 'url'))
+            ->breadcrumb(Breadcrumb::create('text', 'url'))
+        )
+    )
     ->relatedLinks(RelatedLinks::create()
         ->link(InfinityLink::create('url'))
         ->link(ExternalLink::create('text', 'url', 'url'))
@@ -262,6 +277,18 @@ Accordion::create()
     ->item(Item::create('title', 'content'))
     ->item(Item::create('title', 'content'))
     ->item(Item::create('title', 'content'));
+```
+
+### Блок "Аудио"
+
+[Официальная документация](https://yandex.ru/dev/turbo/doc/rss/elements/audio-docpage/)
+
+```php
+<?php
+
+use Mireon\YandexTurbo\Channels\Articles\Item\Content\Blocks\Audio\Audio;
+
+Audio::create()->src('url');
 ```
 
 ### Блок "Слайдер"

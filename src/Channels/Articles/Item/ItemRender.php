@@ -49,6 +49,10 @@ class ItemRender
             $item->content($data->getRelatedLinks()->render());
         }
 
+        if ($data->hasMetrics()) {
+            $item->content($data->getMetrics()->render());
+        }
+
         return $item;
     }
 }
