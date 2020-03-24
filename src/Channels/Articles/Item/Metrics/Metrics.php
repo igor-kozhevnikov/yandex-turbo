@@ -45,6 +45,8 @@ class Metrics implements MetricsInterface
      */
     public function setMetrics(?array $metrics): void
     {
+        $this->metrics = [];
+
         if (!empty($metrics)) {
             foreach ($metrics as $metric) {
                 $this->addMetric($metric);

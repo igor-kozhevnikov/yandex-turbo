@@ -42,7 +42,7 @@ class Breadcrumb
      * @param string|null $url
      *   A URL.
      */
-    public function __construct(?string $text, ?string $url)
+    public function __construct(?string $text = null, ?string $url = null)
     {
         $this->setText($text);
         $this->setUrl($url);

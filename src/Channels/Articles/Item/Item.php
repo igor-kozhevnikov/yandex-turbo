@@ -26,12 +26,12 @@ use Mireon\YandexTurbo\Traits\Renderer;
  *   Sets a publication date.
  * @method self author(?string $author)
  *   Sets an author name.
+ * @method self metrics(MetricsInterface|null $metrics)
+ *   Sets metrics.
  * @method self relatedLinks(RelatedLinksInterface|null $links)
  *   Sets related links.
  * @method self content(ContentInterface|null $content)
  *   Sets an content.
- * @method self metrics(MetricsInterface|null $metrics)
- *   Sets metrics.
  *
  * @package Mireon\YandexTurbo\Channels\Articles\Item
  */

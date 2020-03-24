@@ -6,10 +6,11 @@ use DateTime;
 use Mireon\YandexTurbo\Channels\Articles\Item\Content\Content;
 use Mireon\YandexTurbo\Channels\Articles\Item\Item;
 use Mireon\YandexTurbo\Channels\Articles\Item\Items;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Metrics;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Yandex\Yandex;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\External\Link;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\RelatedLinks;
 use PHPUnit\Framework\TestCase;
-use Mireon\YandexTurbo\Helpers\Str;
 
 /**
  * Testing of the item.
@@ -241,6 +242,32 @@ class ItemTest extends TestCase
     }
 
     /**
+     * Testing of the "metrics" variable.
+     *
+     * @covers \Mireon\YandexTurbo\Channels\Articles\Item\Item::setMetrics
+     * @covers \Mireon\YandexTurbo\Channels\Articles\Item\Item::getMetrics
+     * @covers \Mireon\YandexTurbo\Channels\Articles\Item\Item::hasMetrics
+     *
+     * @return void
+     */
+    public function testMetrics(): void
+    {
+        $item = new Item();
+        $this->assertNull($item->getMetrics());
+        $this->assertFalse($item->hasMetrics());
+
+        $item = new Item();
+        $item->setMetrics(null);
+        $this->assertNull($item->getMetrics());
+        $this->assertFalse($item->hasMetrics());
+
+        $item = new Item();
+        $item->setMetrics(new Metrics([new Yandex()]));
+        $this->assertInstanceOf(Metrics::class, $item->getMetrics());
+        $this->assertTrue($item->hasMetrics());
+    }
+
+    /**
      * Testing of the "relatedLinks" variable.
      *
      * @covers \Mireon\YandexTurbo\Channels\Articles\Item\Item::setRelatedLinks
@@ -324,8 +351,9 @@ class ItemTest extends TestCase
         $topic = 'topic';
         $pubDate = date(DateTime::RFC2822);
         $author = 'author';
-        $content = new Content();
+        $metrics = new Metrics();
         $relatedLinks = new RelatedLinks();
+        $content = new Content();
 
         $item = new Item();
 
@@ -359,15 +387,20 @@ class ItemTest extends TestCase
         $this->assertInstanceOf(Item::class, $item);
         $this->assertSame($author, $item->getAuthor());
 
-        // An content.
-        $item = $item->content($content);
+        // Metrics.
+        $item = $item->metrics($metrics);
         $this->assertInstanceOf(Item::class, $item);
-        $this->assertInstanceOf(Content::class, $item->getContent());
+        $this->assertInstanceOf(Metrics::class, $item->getMetrics());
 
         // Related links.
         $item = $item->relatedLinks($relatedLinks);
         $this->assertInstanceOf(Item::class, $item);
         $this->assertInstanceOf(RelatedLinks::class, $item->getRelatedLinks());
+
+        // An content.
+        $item = $item->content($content);
+        $this->assertInstanceOf(Item::class, $item);
+        $this->assertInstanceOf(Content::class, $item->getContent());
     }
 
     /**
@@ -408,6 +441,7 @@ class ItemTest extends TestCase
         $item->setTopic('sentence');
         $item->setPubDate(date(DateTime::RFC822));
         $item->setAuthor('author');
+        $item->setMetrics(new Metrics());
         $item->setRelatedLinks(new RelatedLinks());
         $item->setContent(new Content());
 
@@ -417,6 +451,7 @@ class ItemTest extends TestCase
         $this->assertNotNull($item->getTopic());
         $this->assertNotNull($item->getPubDate());
         $this->assertNotNull($item->getAuthor());
+        $this->assertNotNull($item->getMetrics());
         $this->assertNotNull($item->getRelatedLinks());
         $this->assertNotNull($item->getContent());
 
@@ -427,6 +462,7 @@ class ItemTest extends TestCase
         $this->assertNull($item->getTopic());
         $this->assertNull($item->getPubDate());
         $this->assertNull($item->getAuthor());
+        $this->assertNull($item->getMetrics());
         $this->assertNull($item->getRelatedLinks());
         $this->assertNull($item->getContent());
     }

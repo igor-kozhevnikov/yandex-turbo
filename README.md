@@ -197,6 +197,8 @@ Articles::create()
 <?php
 
 use Mireon\YandexTurbo\Channels\Articles\Item\Item;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Metrics;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Yandex\Breadcrumb;use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\Yandex\Yandex;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\RelatedLinks;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\Infinity\Link as InfinityLink;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\External\Link as ExternalLink;
@@ -210,6 +212,13 @@ Item::create()
     ->topic('topic')
     ->pubDate('date')
     ->author('author')
+    ->metrics(Metrics::create()
+        ->metric(Yandex::create()
+            ->id('123456')
+            ->breadcrumb(Breadcrumb::create('text', 'url'))
+            ->breadcrumb(Breadcrumb::create('text', 'url'))
+        )
+    )
     ->relatedLinks(RelatedLinks::create()
         ->link(InfinityLink::create('url'))
         ->link(ExternalLink::create('text', 'url', 'url'))
