@@ -14,21 +14,21 @@ class YandexRender
     /**
      * Renders the "Yandex" metric.
      *
-     * @param Yandex $yandex
+     * @param Yandex $data
      *   The "Yandex" metric.
      *
      * @codeCoverageIgnore
      *
      * @return string|null
      */
-    public function render(Yandex $yandex): ?string
+    public function render(Yandex $data): ?string
     {
-        $root = Tag::create('yandex')->attribute('schema_identifier', $yandex->getId());
+        $yandex = Tag::create('yandex')->attribute('schema_identifier', $data->getId());
 
-        if ($yandex->hasBreadcrumbs()) {
-            $breadcrumbs = Tag::create('breadcrumblist')->appendTo($root);
+        if ($data->hasBreadcrumbs()) {
+            $breadcrumbs = Tag::create('breadcrumblist')->appendTo($yandex);
 
-            foreach ($yandex->getBreadcrumbs() as $breadcrumb) {
+            foreach ($data->getBreadcrumbs() as $breadcrumb) {
                 if ($breadcrumb->isValid()) {
                     Tag::create('breadcrumb')
                         ->attribute('url', $breadcrumb->getUrl())
@@ -39,6 +39,6 @@ class YandexRender
             }
         }
 
-        return $root;
+        return $yandex;
     }
 }

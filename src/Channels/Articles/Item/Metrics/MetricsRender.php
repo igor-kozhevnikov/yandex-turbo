@@ -23,10 +23,9 @@ class MetricsRender
      */
     public function render(MetricsInterface $metrics): ?string
     {
-        return Tag::create('metrics')
-            ->content(
-                $metrics->getMetrics(),
-                fn (MetricInterface $metric) => $metric->isValid() ? $metric->render() : null
-            );
+        return Tag::create('metrics')->content(
+            $metrics->getMetrics(),
+            fn (MetricInterface $metric) => $metric->isValid() ? $metric->render() : null
+        );
     }
 }

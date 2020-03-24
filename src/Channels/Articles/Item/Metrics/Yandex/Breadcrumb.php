@@ -91,7 +91,7 @@ class Breadcrumb
      */
     public function setText(?string $text): void
     {
-        $this->text = !empty($text) ? $text : null;
+        $this->text = $text ?: null;
     }
 
     /**
