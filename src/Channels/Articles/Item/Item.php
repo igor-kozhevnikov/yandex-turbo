@@ -4,6 +4,7 @@ namespace Mireon\YandexTurbo\Channels\Articles\Item;
 
 use DateTime;
 use Mireon\YandexTurbo\Channels\Articles\Item\Content\ContentInterface;
+use Mireon\YandexTurbo\Channels\Articles\Item\Metrics\MetricsInterface;
 use Mireon\YandexTurbo\Channels\Articles\Item\RelatedLinks\RelatedLinksInterface;
 use Mireon\YandexTurbo\Traits\Creator;
 use Mireon\YandexTurbo\Traits\MagicSetter;
@@ -25,6 +26,8 @@ use Mireon\YandexTurbo\Traits\Renderer;
  *   Sets a publication date.
  * @method self author(?string $author)
  *   Sets an author name.
+ * @method self metrics(MetricsInterface|null $metrics)
+ *   Sets metrics.
  * @method self relatedLinks(RelatedLinksInterface|null $links)
  *   Sets related links.
  * @method self content(ContentInterface|null $content)
@@ -93,6 +96,13 @@ class Item implements ItemInterface
      * @var RelatedLinksInterface|null
      */
     private ?RelatedLinksInterface $relatedLinks = null;
+
+    /**
+     * The metrics.
+     *
+     * @var MetricsInterface|null $metrics
+     */
+    private ?MetricsInterface $metrics = null;
 
     /**
      * The constructor.
@@ -326,6 +336,39 @@ class Item implements ItemInterface
     }
 
     /**
+     * Sets metrics.
+     *
+     * @param MetricsInterface|null $metrics
+     *   A metrics.
+     *
+     * @return void
+     */
+    public function setMetrics(?MetricsInterface $metrics): void
+    {
+        $this->metrics = $metrics;
+    }
+
+    /**
+     * Indicates if the metrics is set.
+     *
+     * @return bool
+     */
+    public function hasMetrics(): bool
+    {
+        return !is_null($this->metrics);
+    }
+
+    /**
+     * Returns the metrics.
+     *
+     * @return MetricsInterface|null
+     */
+    public function getMetrics(): ?MetricsInterface
+    {
+        return $this->metrics;
+    }
+
+    /**
      * Sets related links.
      *
      * @param RelatedLinksInterface|null $links
@@ -406,6 +449,7 @@ class Item implements ItemInterface
         $this->author = null;
         $this->relatedLinks = null;
         $this->content = null;
+        $this->metrics = null;
     }
 
     /**
