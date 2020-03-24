@@ -12,7 +12,7 @@ use Mireon\YandexTurbo\Helpers\Tag\Tag;
 class ButtonRender
 {
     /**
-     * Renders the "Html" block.
+     * Renders the "Button" block.
      *
      * @param Button $button
      *   The "Button" block.

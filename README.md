@@ -279,6 +279,18 @@ Accordion::create()
     ->item(Item::create('title', 'content'));
 ```
 
+### Блок "Аудио"
+
+[Официальная документация](https://yandex.ru/dev/turbo/doc/rss/elements/audio-docpage/)
+
+```php
+<?php
+
+use Mireon\YandexTurbo\Channels\Articles\Item\Content\Blocks\Audio\Audio;
+
+Audio::create()->src('url');
+```
+
 ### Блок "Слайдер"
 
 [Официальная документация](https://yandex.ru/dev/turbo/doc/rss/elements/slider-docpage/)
