@@ -1,5 +1,5 @@
 {
-    "name": "mireon/yandex-turbo",
+    "name": "igor-kozhevnikov/yandex-turbo",
     "description": "Package for working with the «Yandex.Turbo» service.",
     "version": "1.1.0",
     "keywords": ["yandex", "yandex turbo"],

@@ -13,7 +13,7 @@
 Установка с помощью [Composer](https://getcomposer.org/):
 
 ```sh
-$ composer require mireon/yandex-turbo
+$ composer require igor-kozhevnikov/yandex-turbo
 ```
         
 ## Кодинг
